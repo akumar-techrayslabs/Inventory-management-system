@@ -250,4 +250,4 @@
         - Extract the token 
         - Verify JWT 
         - and then using token the middleware will extract the user role or permissions and accoridngly can pass or use next otherwise it will deny the user
-    -
+   
