@@ -98,7 +98,7 @@ This ensures:
 
 ## Instead of permanently deleting records:
 
-- is_deleted = true
+- is_active= false
 
 - This ensures:
 
@@ -239,3 +239,23 @@ Response returned
 - Error responses
 
 - Bearer token security scheme
+
+
+# Trade-offs & Design Decisions
+ ## Permissions Stored in JWT
+- Advantage:
+    - Faster authorization (no DB hit per request)
+    - Better performance
+    - Trade-off:
+If permissions change, token must be refreshed
+ Master Tables Instead of ENUM
+
+
+-  Advantage:
+    - Fully scalable
+    - Dynamic updates possible
+    - Trade-off:
+
+## Soft Delete Instead of Hard Delete
+
+## Can be extended in future using user_roles
