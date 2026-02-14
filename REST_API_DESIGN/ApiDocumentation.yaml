@@ -286,7 +286,8 @@ paths:
                   - organization_id
                   - full_name
                   - email
-                  - password_hash
+                  - phone_no
+                  - password
                   - status_id
                 
 
@@ -295,10 +296,12 @@ paths:
                     type: integer
                   full_name:
                     type: string
+                  phone_no:
+                    type: string                  
                   email:
                     type: string
                     format: email
-                  password_hash:
+                  password:
                     type: string
                   status_id:
                     type: integer
@@ -317,30 +320,40 @@ paths:
                   message:
                
                     example: "User created successfully"
+
+
                   data:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                      organization_id:
-                        type: string
-                      full_name:
-                        type: string
-                      email:
-                        type: string 
-                        format: email
-                      status_id:
-                        type: number
-                      is_verfied:
-                        type: boolean
-                        example: true
-                      createdAt:
-                        type: string
-                        format: date-time
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        organization_id:
+                          type: string
+                        full_name:
+                          type: string
+                        email:
+                          type: string 
+                          format: email
+                        status_id:
+                          type: number
+                        is_verfied:
+                          type: boolean
+                          example: true
+                        createdAt:
+                          type: string
+                          format: date-time
                   
+
+
         '400':
           description: Error while creating
-        
+
+        '404': 
+          description: Page not found 
+        '401':
+          description: User doesn't exists
         '409':
           description: Email already Exists
           content:
@@ -446,6 +459,7 @@ paths:
                   message:
                
                     example: "User updated successfully"
+
                   data:
                     type: object
                     properties:

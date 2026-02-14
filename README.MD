@@ -71,11 +71,11 @@ Instead of using hardcoded ENUMs, we used master tables such as:
 ## We implemented RBAC using four core tables:
 
 - users
-- 
+
 - roles
-- 
+
 - permissions
-- 
+
 - role_permissions
 
 
@@ -194,16 +194,16 @@ DELETE_PRODUCT permission
 
  Login Flow
 
-User → POST /login
-      ↓
+User -> POST /login
+      ->
 Verify credentials
-      ↓
+      ->
 Fetch role
-      ↓
+      ->
 Fetch permissions
-      ↓
+      ->
 Generate JWT
-      ↓
+      ->
 Send token to client
 
 
@@ -212,14 +212,30 @@ Send token to client
 
 # Protected API Flow
 
-Client → Sends request with JWT
-        ↓
+Client -> Sends request with JWT
+        ->
 Authentication Middleware verifies token
-        ↓
+        ->
 Authorization Middleware checks permission
-        ↓
+        ->
 Controller executes logic
-        ↓
+        ->
 Database operation
-        ↓
+        ->
 Response returned
+
+# API Documentation
+
+## Swagger yaml  is used for API documentation.
+
+- Documentation includes:
+
+- Request body schema
+
+- Response schema
+
+- Authentication requirement
+
+- Error responses
+
+- Bearer token security scheme
